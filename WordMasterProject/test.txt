@@ -1,0 +1,4 @@
+1|apple|사과, 덩덩
+3|superintendent|관리자, 감독자
+2|advertisement|광고
+1| apple|apple
