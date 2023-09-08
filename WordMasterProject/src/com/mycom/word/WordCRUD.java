@@ -29,8 +29,10 @@ public class WordCRUD implements ICRUD{
 	
 	@Override 
 	public Object add() { // 사용자에게 입력받는 함수 
-		System.out.print("=> 난이도(1,2,3) & 새 단어 입력 : ");
+		System.out.print("=> 난이도(1,2,3): ");
 		int level = s.nextInt();
+		s.nextLine();
+		System.out.print("추가할 단어: ");
 		String word = s.nextLine();
 		System.out.print("뜻 입력 : ");
 		String meaning = s.nextLine();
@@ -61,6 +63,7 @@ public class WordCRUD implements ICRUD{
 		
 	}
 	
+//기본 listAll , 모든 내용 출력 
 	public void listAll() {
 		System.out.println("----------------------------------");
 		for(int i = 0; i<list.size(); i++) {
@@ -69,7 +72,7 @@ public class WordCRUD implements ICRUD{
 		}
 		System.out.println("----------------------------------");
 	}
-
+//키워드를 파라미터로 갖는 listAll, 키워드가 포함된 단어만 출력  
 	public ArrayList <Integer> listAll(String keyword) { // ArrayList로 리턴하도록 함, listAll로 overloading  
 		ArrayList <Integer> idlist = new ArrayList<>();
 		int j=0;
@@ -104,7 +107,7 @@ public class WordCRUD implements ICRUD{
 	public void updateItem() {
 		System.out.print("=> 수정할 단어 검색 : ");
 		String keyword = s.next(); 
-		ArrayList<Integer> idlist = this.listAll(keyword); // listall에 keyword를 넘겨주고 받아온 결과를 idlist에 저장. 
+		ArrayList<Integer> idlist = this.listAll(keyword); // listall 메서드에 keyword를 넘겨주고 받아온 결과를 idlist에 저장. 
 		System.out.print("=> 수정할 번호 선택: ");
 		int id = s.nextInt();
 		s.nextLine(); // 엔터 포함 안되게 처리 
@@ -121,14 +124,14 @@ public class WordCRUD implements ICRUD{
 	public void deleteItem() {
 		System.out.print("=> 삭제할 단어 검색 : ");
 		String keyword = s.next(); 
-		ArrayList<Integer> idlist = this.listAll(keyword); // listall에 keyword를 넘겨주고 받아온 결과를 idlist에 저장. 
+		ArrayList<Integer> idlist = this.listAll(keyword); // listAll에 keyword를 넘겨주고 받아온 결과를 idlist에 저장. 
 		System.out.print("=> 삭제할 번호 선택: ");
 		int id = s.nextInt();
 		s.nextLine(); // 엔터 포함 안되게 처리 
 		
 		System.out.print("정말로 삭제하시겠습니까?(Y/N)");
 		String ans = s.next(); // 응답이 Y/N 인지 받음 
-		if(ans.equalsIgnoreCase("y")) {
+		if(ans.equalsIgnoreCase("y")) { // 케이스 신경쓰지 않고 y이기만 하면 ok 
 			list.remove((int)idlist.get(id-1)); // int 캐스팅을 안하면 삭제가 안됨.
 			System.out.println("단어가 삭제되었습니다. ");
 		}
@@ -155,7 +158,7 @@ public class WordCRUD implements ICRUD{
 			
 			
 			br.close(); // 닫기 
-			System.out.println("==> "+count+"개 단어 로딩 완료! "); // 오류 없었으면 로딩된 총 단어 수 출력 
+			System.out.println("==> 총 "+count+"개 단어 로딩 완료! "); // 오류 없었으면 로딩된 총 단어 수 출력 
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -171,7 +174,7 @@ public class WordCRUD implements ICRUD{
 			}
 			
 			pr.close();
-			System.out.println("==> 저장 완료! ");
+			System.out.println("\n ==> 파일 저장 완료! \n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -180,15 +183,22 @@ public class WordCRUD implements ICRUD{
 	}
 
 	public void searchLevel() {
-		System.out.print("=> 원하는 레벨은? (1~3)");
+		System.out.print("=> 원하는 레벨은? (1~3 입력): ");
 		int level = s.nextInt();
 		listAll(level); // 레벨에 따라 단어 출력하는 함수 사용 
 	}
 
 	public void searchWord() {
-		System.out.print("=> 원하는 단어는? (1~3)");
+		System.out.print("=> 검색하려는 단어는? :");
 		String keyword = s.next();
 		listAll(keyword); // 위에서 만들어둔 listAll로 키워드 찾음 
+		
+		/*
+		 * 아무것도 없으면 해당 단어가 없다고 출력하기. 
+		 * 다시 입력하시겠습니까? 묻기 
+		 * 
+		 * 
+		 * */
 	}
 
 }
