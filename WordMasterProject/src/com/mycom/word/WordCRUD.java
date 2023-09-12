@@ -85,6 +85,7 @@ public class WordCRUD implements ICRUD{
 			idlist.add(i);
 			j++; // 반복될때마다 j값 증가 
 		}
+		if(j==0) System.out.println("\n    찾는 단어가 현재 단어장에 없습니다\n");
 		System.out.println("----------------------------------");
 		return idlist;
 	}
