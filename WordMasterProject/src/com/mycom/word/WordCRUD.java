@@ -29,13 +29,25 @@ public class WordCRUD implements ICRUD{
 	
 	@Override 
 	public Object add() { // 사용자에게 입력받는 함수 
+		int level = -1;
 		System.out.print("=> 난이도(1,2,3): ");
-		int level = s.nextInt();
+		do{
+	
+		level = s.nextInt();
+		
+		if(level>0&&level<4) {
+			s.nextLine();
+			break;
+		}else System.out.println("! 1과 3 사이의 숫자만 입력해주세요. !");
 		s.nextLine();
+		System.out.println("다시 입력(1~3): ");
+		}while(level<1||level>3);
+		
 		System.out.print("추가할 단어: ");
 		String word = s.nextLine();
 		System.out.print("뜻 입력 : ");
 		String meaning = s.nextLine();
+		
 		return new Word(0, level, word, meaning);
 	}
 	
@@ -109,16 +121,18 @@ public class WordCRUD implements ICRUD{
 		System.out.print("=> 수정할 단어 검색 : ");
 		String keyword = s.next(); 
 		ArrayList<Integer> idlist = this.listAll(keyword); // listall 메서드에 keyword를 넘겨주고 받아온 결과를 idlist에 저장. 
-		System.out.print("=> 수정할 번호 선택: ");
+		System.out.print("=> 수정할 번호 선택(0으로 취소): ");
 		int id = s.nextInt();
 		s.nextLine(); // 엔터 포함 안되게 처리 
+		if(id==0) System.out.println("취소되었습니다. \n\n");
+		else {
 		System.out.print("뜻 입력: ");
 		String meaning = s.nextLine(); // 뜻 입력해야하므로 공백도 포함하는 nextLine으로 받음. 
 		
 		Word word = list.get(idlist.get(id-1));
 		word.setMeaning(meaning); // 입력한 뜻으로 변경 
 		System.out.println("단어가 수정되었습니다. ");
-		
+		}
 		
 	}
 

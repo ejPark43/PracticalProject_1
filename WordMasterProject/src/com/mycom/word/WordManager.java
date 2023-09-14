@@ -53,6 +53,7 @@ WordManager(){
 			else if(menu == 7) { // save data
 				wordCRUD.saveFile();
 				}
+			else System.out.println("\n==>해당 메뉴가 없습니다. 다시 입력해주세요. \n");
 		
 		}
 	}
