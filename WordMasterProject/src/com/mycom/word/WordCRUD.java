@@ -38,7 +38,7 @@ public class WordCRUD implements ICRUD{
 		if(level>0&&level<4) {
 			s.nextLine();
 			break;
-		}else System.out.println("! 1과 3 사이의 숫자만 입력해주세요. !");
+		}else System.out.print("1과 3 사이의 숫자만 입력해주세요.\n");
 		s.nextLine();
 		System.out.println("다시 입력(1~3): ");
 		}while(level<1||level>3);
@@ -198,8 +198,14 @@ public class WordCRUD implements ICRUD{
 	}
 
 	public void searchLevel() {
+		int level=0;
+		while(true) {
 		System.out.print("=> 원하는 레벨은? (1~3 입력): ");
-		int level = s.nextInt();
+		level = s.nextInt();
+		if(!(level>0&&level<4)) {
+			System.out.println("=> 1에서 3 사이의 숫자만 입력해주세요.\n다시 입력:"); 
+		}else break;
+		}
 		listAll(level); // 레벨에 따라 단어 출력하는 함수 사용 
 	}
 
@@ -208,12 +214,7 @@ public class WordCRUD implements ICRUD{
 		String keyword = s.next();
 		listAll(keyword); // 위에서 만들어둔 listAll로 키워드 찾음 
 		
-		/*
-		 * 아무것도 없으면 해당 단어가 없다고 출력하기. 
-		 * 다시 입력하시겠습니까? 묻기 
-		 * 
-		 * 
-		 * */
+
 	}
 
 }
