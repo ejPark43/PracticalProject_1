@@ -6,3 +6,6 @@
 3|eclipse|식(개기일식, 개기월식)
 1|assume|추측하다
 1|coffee|커피
+1|desk|책상
+1|dad|아빠
+1|science|과학

@@ -80,7 +80,7 @@ public class WordCRUD implements ICRUD{
 	public void listAll() {
 		System.out.println("----------------------------------");
 		for(int i = 0; i<list.size(); i++) {
-			System.out.print((i+1) + "  ");
+			System.out.printf("%-3d",(i+1));
 			System.out.println(list.get(i).toString());
 		}
 		System.out.println("----------------------------------");
@@ -93,7 +93,7 @@ public class WordCRUD implements ICRUD{
 		for(int i = 0; i<list.size(); i++) {
 			String word = list.get(i).getWord();
 			if(!word.contains(keyword)) continue; // 키워드 포함 안하면 출력 건너뜀 
-			System.out.print((j+1) + "  "); // 키워드가 포함된 단어를 세는 변수가 j이므로 j로 단어의 번호를 매김 
+			System.out.printf("%-3d",(j+1)); // 키워드가 포함된 단어를 세는 변수가 j이므로 j로 단어의 번호를 매김 
 			System.out.println(list.get(i).toString());
 			idlist.add(i);
 			j++; // 반복될때마다 j값 증가 
@@ -110,7 +110,7 @@ public class WordCRUD implements ICRUD{
 		for(int i = 0; i<list.size(); i++) {
 			int ilevel = list.get(i).getLevel(); // 레벨 가져옴. 
 			if(ilevel!=level) continue; // 검색한 레벨과 동일하지 않으면 건너뜀 
-			System.out.print((j+1) + "  "); // 검색한 레벨과 같은 단어를 세는 변수가 j이므로 j로 단어의 번호를 매김 
+			System.out.printf("%-3d",(j+1)); // 검색한 레벨과 같은 단어를 세는 변수가 j이므로 j로 단어의 번호를 매김 
 			System.out.println(list.get(i).toString());
 			j++; // 반복될때마다 j값 증가 
 		}
