@@ -5,3 +5,4 @@
 1|go|가다
 3|eclipse|식(개기일식, 개기월식)
 1|assume|추측하다
+1|coffee|커피

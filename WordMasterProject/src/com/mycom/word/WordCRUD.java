@@ -39,6 +39,7 @@ public class WordCRUD implements ICRUD{
 			s.nextLine();
 			break;
 		}else System.out.print("1과 3 사이의 숫자만 입력해주세요.\n");
+		
 		s.nextLine();
 		System.out.println("다시 입력(1~3): ");
 		}while(level<1||level>3);
